@@ -1,14 +1,87 @@
 package com.example
 
+var currentHero: Hero? = null
+
 fun main() {
-    val hero = Hero("Arthur", 100, 30, 15, 5, 12)
-    hero.inventory.addItem(Consumable("Poção de Vida", "Cura 20 HP", heal = 20))
-    camp(hero)
+    var running = true
 
-    val enemy = Enemy("Goblin", 60, 0, 10, 3, 8, emptyList())
+    while (running) {
+        println(
+            """
+        === MENU INICIAL ===
+        ${if (currentHero == null) "Nenhum personagem criado" else "Personagem atual: ${currentHero?.name}"}
+        
+        1 - Criar personagem
+        2 - Apagar personagem
+        3 - Entrar no jogo
+        4 - Sair
+        """.trimIndent()
+        )
 
-    TurnBasedCombat.start(hero, enemy)
+        when (readLine()?.toIntOrNull()) {
+            1 -> createHero()
+            2 -> deleteHero()
+            3 -> {
+                if (currentHero == null) {
+                    println("❌ Crie um personagem antes de entrar no jogo.")
+                } else {
+                    camp(currentHero!!)
+                }
+            }
+            4 -> {
+                println("👋 Saindo do jogo. Até a próxima!")
+                running = false
+            }
+            else -> println("Opção inválida.")
+        }
+    }
 }
+
+//val hero = Hero("Arthur", 100, 30, 15, 5, 12)
+//hero.inventory.addItem(Consumable("Poção de Vida", "Cura 20 HP", heal = 20))
+//camp(hero)
+
+//val enemy = Enemy("Goblin", 60, 0, 10, 3, 8, emptyList())
+
+//TurnBasedCombat.start(hero, enemy)
+
+fun createHero() {
+    if (currentHero != null) {
+        println("❌ Já existe um personagem criado.")
+        return
+    }
+
+    println("Digite o nome do seu herói:")
+    val name = readLine()?.trim().takeIf { !it.isNullOrEmpty() } ?: "Herói"
+
+    currentHero = Hero(
+        name = name,
+        health = 100,
+        mana = 30,
+        strength = 15,
+        defense = 5,
+        agility = 10
+    )
+
+    currentHero!!.inventory.addItem(Consumable("Poção de Vida", "Cura 20 HP", heal = 20))
+    println("✅ Personagem $name criado com sucesso!")
+}
+
+fun deleteHero() {
+    if (currentHero == null) {
+        println("⚠️ Nenhum personagem para apagar.")
+    } else {
+        println("Tem certeza que deseja apagar ${currentHero!!.name}? (s/n)")
+        val confirm = readLine()
+        if (confirm.equals("s", ignoreCase = true)) {
+            currentHero = null
+            println("✅ Personagem apagado.")
+        } else {
+            println("❌ Ação cancelada.")
+        }
+    }
+}
+
 
 fun camp(hero: Hero) {
     println("\nVocê está no acampamento, ${hero.name}.")
