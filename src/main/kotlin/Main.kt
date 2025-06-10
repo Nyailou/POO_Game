@@ -96,56 +96,137 @@ class Camp {
 
 fun explore(hero: Hero) {
     val skill = Skill("Golpe Flamejante", 10, 25)
-    val enemy = Enemy(
-        name = "Goblin",
-        health = 70,
-        mana = 20,
-        strength = 15,
-        defense = 5,
-        agility = 3,
-        loot = listOf(Consumable("Poção Fraca", "Cura 15 HP", heal = 15))
-    )
+    val lootColetado = mutableListOf<Item>()
+    var xpGanho = 0
+    var encontros = 0
+    val maxEncontros = 10
 
-    println("Você encontrou um ${enemy.name}!")
+    println("Você partiu para a exploração!")
 
-    while (hero.isAlive() && enemy.isAlive()) {
-        println("\n${hero.name} HP: ${hero.health}, Mana: ${hero.mana}")
-        println("${enemy.name} HP: ${enemy.health}")
-        println("1 - Atacar")
-        println("2 - Usar item")
-        println("3 - Usar habilidade")
-        println("4 - Fugir")
+    while (hero.isAlive()) {
+        encontros++
+        val isBoss = encontros > maxEncontros
 
-        when (readLine()) {
-            "1" -> hero.attack(enemy)
-            "2" -> {
-                val consumables = hero.inventory.getItems().filterIsInstance<Consumable>()
-                if (consumables.isEmpty()) println("Nenhum item utilizável.")
-                else {
-                    consumables.forEachIndexed { i, item -> println("${i + 1} - ${item.name}") }
-                    val idx = readLine()?.toIntOrNull()?.minus(1)
-                    val item = consumables.getOrNull(idx ?: -1)
-                    item?.use(hero) ?: println("Opção inválida.")
-                }
-            }
-            "3" -> skill.use(hero, enemy)
-            "4" -> {
-                println("Você fugiu de volta ao acampamento.")
-                return
-            }
-            else -> println("Inválido.")
+        val enemy = if (isBoss) {
+            Enemy(
+                name = "Dragão das Sombras",
+                health = 250,
+                mana = 100,
+                strength = 35,
+                defense = 20,
+                agility = 10,
+                loot = listOf(
+                    Consumable("Poção Mística", "Cura 100 HP e 50 Mana", heal = 100, manaRestore = 50),
+                    Consumable("Elixir do Poder", "Cura total", heal = 999)
+                )
+            )
+        } else {
+            Enemy(
+                name = listOf("Goblin", "Esqueleto", "Bandido").random(),
+                health = (60..100).random(),
+                mana = (10..30).random(),
+                strength = (10..20).random(),
+                defense = (5..15).random(),
+                agility = (2..6).random(),
+                loot = listOf(Consumable("Poção Fraca", "Cura 15 HP", heal = 15))
+            )
         }
 
-        if (enemy.isAlive()) enemy.attack(hero)
+        println("\nVocê encontrou um ${enemy.name}!")
+
+        combate@ while (hero.isAlive() && enemy.isAlive()) {
+            println("\n${hero.name} HP: ${hero.health}, Mana: ${hero.mana}")
+            println("${enemy.name} HP: ${enemy.health}")
+            println("1 - Atacar")
+            println("2 - Usar item")
+            println("3 - Usar habilidade")
+            if (!isBoss) println("4 - Desistir da exploração (sem recompensas)")
+            if (!isBoss) println("5 - Fugir da luta (continua explorando)")
+
+            when (readLine()) {
+                "1" -> hero.attack(enemy)
+                "2" -> {
+                    val consumables = hero.inventory.getItems().filterIsInstance<Consumable>()
+                    if (consumables.isEmpty()) println("Nenhum item utilizável.")
+                    else {
+                        consumables.forEachIndexed { i, item -> println("${i + 1} - ${item.name}") }
+                        val idx = readLine()?.toIntOrNull()?.minus(1)
+                        val item = consumables.getOrNull(idx ?: -1)
+                        item?.use(hero) ?: println("Opção inválida.")
+                    }
+                }
+                "3" -> skill.use(hero, enemy)
+                "4" -> {
+                    if (!isBoss) {
+                        println("Você desistiu da exploração e retorna de mãos vazias.")
+                        return
+                    } else println("Você não pode desistir contra o boss!")
+                }
+                "5" -> {
+                    if (!isBoss) {
+                        println("Você fugiu dessa luta, mas continua a explorar.")
+                        break@combate
+                    } else println("Você não pode fugir do boss!")
+                }
+                else -> println("Opção inválida.")
+            }
+
+            if (enemy.isAlive()) {
+                enemy.attack(hero)
+            }
+        }
+
+        if (!hero.isAlive()) {
+            println("Você morreu durante a exploração. Fim de jogo.")
+            return
+        }
+
+        if (!enemy.isAlive()) {
+            println("Você derrotou o ${enemy.name}!")
+
+            if (isBoss) {
+                xpGanho += 500
+                lootColetado.addAll(enemy.loot)
+                println("Parabéns! Você derrotou o boss final.")
+                break
+            } else {
+                xpGanho += 100
+                lootColetado.addAll(enemy.loot)
+            }
+        }
+
+        if (!isBoss) {
+            println("\nDeseja continuar explorando?")
+            println("1 - Sim")
+            println("2 - Encerrar exploração e voltar ao acampamento com recompensas")
+
+            when (readLine()) {
+                "2" -> {
+                    println("Você retornou com sucesso ao acampamento!")
+                    println("XP ganho: $xpGanho")
+                    ExperienceSystem.gainXp(hero, xpGanho)
+
+                    println("Loot coletado:")
+                    lootColetado.forEach {
+                        println("- ${it.name}")
+                        hero.inventory.addItem(it)
+                    }
+                    return
+                }
+                "1" -> continue
+                else -> println("Opção inválida. Continuando por padrão.")
+            }
+        }
     }
 
-    if (hero.isAlive()) {
-        println("Você venceu o ${enemy.name}!")
-        ExperienceSystem.gainXp(hero, 100)
-        enemy.loot.forEach { hero.inventory.addItem(it) }
-    } else {
-        println("Você foi derrotado...")
-    }
+    // Se chegar aqui, venceu o boss
+    println("Você retornou ao acampamento com grande glória!")
+    println("XP ganho: $xpGanho")
+    ExperienceSystem.gainXp(hero, xpGanho)
 
-    println("Retornando ao acampamento...")
+    println("Loot coletado:")
+    lootColetado.forEach {
+        println("- ${it.name}")
+        hero.inventory.addItem(it)
+    }
 }
