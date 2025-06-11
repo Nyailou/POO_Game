@@ -1,5 +1,7 @@
 package com.example
+import kotlinx.serialization.Serializable
 
+@Serializable
 class Inventory {
     private val items = mutableListOf<Item>()
 

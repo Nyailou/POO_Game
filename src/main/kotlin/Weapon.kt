@@ -7,5 +7,8 @@ import kotlinx.serialization.Serializable
 data class Weapon(
     override val name: String,
     override val description: String,
-    val attackBonus: Int
-) : Item()
+    override val strengthBonus: Int,
+    override val defenseBonus: Int = 0
+) : Equipable() {
+    override val slot = EquipmentSlot.WEAPON
+}

@@ -119,7 +119,9 @@ class Camp {
             println("2 - Armazenar item")
             println("3 - Retirar item")
             println("4 - Explorar")
-            println("5 - Sair do jogo")
+            println("5 - Equipar item")
+            println("6 - Desequipar item")
+            println("7 - Sair do jogo")
 
             when (readLine()) {
                 "1" -> rest(hero)
@@ -130,6 +132,25 @@ class Camp {
                     onExplore(hero)
                 }
                 "5" -> {
+                    val equipables = hero.inventory.getItems().filterIsInstance<Equipable>()
+                    if (equipables.isEmpty()) {
+                        println("Nenhum equipamento disponível.")
+                    } else {
+                        println("Escolha um item para equipar:")
+                        equipables.forEachIndexed { i, item -> println("${i + 1} - ${item.name} (${item.slot})") }
+                        val idx = readLine()?.toIntOrNull()?.minus(1)
+                        val item = equipables.getOrNull(idx ?: -1)
+                        if (item != null) hero.equip(item) else println("Opção inválida.")
+                    }
+                }
+                "6" -> {
+                    println("Escolha o slot para desequipar:")
+                    EquipmentSlot.values().forEachIndexed { i, slot -> println("${i + 1} - $slot") }
+                    val idx = readLine()?.toIntOrNull()?.minus(1)
+                    val slot = EquipmentSlot.values().getOrNull(idx ?: -1)
+                    if (slot != null) hero.unequip(slot) else println("Opção inválida.")
+                }
+                "7" -> {
                     println("Encerrando o jogo. Até a próxima!")
                     exitProcess(0)
                 }
