@@ -1,29 +1,70 @@
 package com.example
 import kotlin.system.exitProcess
 
-fun main() {
-    val hero = Hero("Jogador", 100, 50, 20, 10, 5)
-    hero.inventory.addItem(Consumable("Poção de Vida", "Cura 30 HP", heal = 30))
-    val skill = Skill("Golpe Flamejante", 10, 25)
-    val camp = Camp()
-
+fun startGameLoop(hero: Hero, camp: Camp) {
     println("Bem-vindo ao seu acampamento, ${hero.name}!")
 
     while (hero.isAlive()) {
         camp.menu(hero, ::explore)
+        SaveManager.save(hero)
     }
 
     println("Você morreu... Fim de jogo.")
+    SaveManager.delete()
 }
 
 
+fun main() {
+    val camp = Camp()
+    var hero: Hero?
+
+    while (true) {
+        println("\n=== Menu Inicial ===")
+        println("1 - Criar novo personagem")
+        println("2 - Continuar com personagem existente")
+        println("3 - Eliminar personagem")
+        println("4 - Sair do jogo")
+
+        when (readLine()) {
+            "1" -> {
+                println("Nome do herói:")
+                val name = readLine() ?: "Jogador"
+                hero = Hero(name, 100, 50, 20, 10, 5)
+                hero.inventory.addItem(Consumable("Poção de Vida", "Cura 30 HP", heal = 30))
+                SaveManager.save(hero)
+                println("Personagem criado e salvo com sucesso!")
+                startGameLoop(hero, camp)
+            }
+            "2" -> {
+                hero = SaveManager.load()
+                if (hero != null) {
+                    println("Personagem ${hero.name} carregado com sucesso.")
+                    startGameLoop(hero, camp)
+                } else {
+                    println("Nenhum personagem salvo encontrado.")
+                }
+            }
+            "3" -> {
+                SaveManager.delete()
+                println("Personagem eliminado.")
+            }
+            "4" -> {
+                println("Até à próxima!")
+                exitProcess(0)
+            }
+            else -> println("Opção inválida.")
+        }
+    }
+}
+
 class Camp {
-    private val chest = mutableListOf<Item>()
+    private val chest = ChestManager.load()
 
     fun rest(hero: Hero) {
         hero.health = 100
         hero.mana = 50
         println("${hero.name} descansou. Vida e mana restauradas!")
+        SaveManager.save(hero)
     }
 
     fun storeItem(hero: Hero) {
@@ -41,6 +82,8 @@ class Camp {
         if (item != null) {
             chest.add(item)
             hero.inventory.removeItem(item)
+            ChestManager.save(chest)
+            SaveManager.save(hero)
             println("${item.name} armazenado no baú.")
         } else {
             println("Opção inválida.")
@@ -61,6 +104,8 @@ class Camp {
         if (item != null) {
             hero.inventory.addItem(item)
             chest.remove(item)
+            ChestManager.save(chest)
+            SaveManager.save(hero)
             println("${item.name} adicionado ao inventário.")
         } else {
             println("Opção inválida.")
@@ -93,6 +138,7 @@ class Camp {
         }
     }
 }
+
 
 fun explore(hero: Hero) {
     val skill = Skill("Golpe Flamejante", 10, 25)

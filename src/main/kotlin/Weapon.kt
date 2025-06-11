@@ -1,7 +1,11 @@
 package com.example
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-class Weapon(
-    name: String,
-    description: String,
+@Serializable
+@SerialName("Weapon")
+data class Weapon(
+    override val name: String,
+    override val description: String,
     val attackBonus: Int
-) : Item(name, description)
+) : Item()
