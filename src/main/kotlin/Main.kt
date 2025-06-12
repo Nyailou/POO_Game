@@ -1,5 +1,6 @@
 package com.example
 import kotlin.system.exitProcess
+import generateEnemy
 
 fun startGameLoop(hero: Hero, camp: Camp) {
     println("Bem-vindo ao seu acampamento, ${hero.name}!")
@@ -188,15 +189,7 @@ fun explore(hero: Hero) {
                 )
             )
         } else {
-            Enemy(
-                name = listOf("Goblin", "Esqueleto", "Bandido").random(),
-                health = (60..100).random(),
-                mana = (10..30).random(),
-                strength = (10..20).random(),
-                defense = (5..15).random(),
-                agility = (2..6).random(),
-                loot = listOf(Consumable("Poção Fraca", "Cura 15 HP", heal = 15))
-            )
+            EnemyLoader.generateEnemyFromTemplates(hero.level)
         }
 
         println("\nVocê encontrou um ${enemy.name}!")

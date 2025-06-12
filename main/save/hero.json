@@ -1,10 +1,10 @@
 {
-    "name": "asdasd",
+    "name": "1",
     "health": 100,
     "mana": 50,
-    "strength": 20,
-    "defense": 10,
-    "agility": 5,
+    "strength": 30,
+    "defense": 20,
+    "agility": 10,
     "inventory": {
         "items": [
             {
@@ -12,7 +12,38 @@
                 "name": "Poção de Vida",
                 "description": "Cura 30 HP",
                 "heal": 30
+            },
+            {
+                "type": "Consumable",
+                "name": "Poção Fraca",
+                "description": "Cura 15 HP",
+                "heal": 15
+            },
+            {
+                "type": "Consumable",
+                "name": "Poção Fraca",
+                "description": "Cura 15 HP",
+                "heal": 15
+            },
+            {
+                "type": "Consumable",
+                "name": "Poção Fraca",
+                "description": "Cura 15 HP",
+                "heal": 15
+            },
+            {
+                "type": "Consumable",
+                "name": "Poção Fraca",
+                "description": "Cura 15 HP",
+                "heal": 15
+            },
+            {
+                "type": "Consumable",
+                "name": "Poção Fraca",
+                "description": "Cura 15 HP",
+                "heal": 15
             }
         ]
-    }
+    },
+    "level": 6
 }

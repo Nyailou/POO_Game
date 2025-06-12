@@ -11,8 +11,6 @@ class Hero(
     override var agility: Int,
     val inventory: Inventory = Inventory(),
     private val equipment: MutableMap<EquipmentSlot, Equipable> = mutableMapOf(),
-
-    // NOVOS CAMPOS:
     var level: Int = 1,
     var experience: Int = 0
 ) : Character(name, health, mana, strength, defense, agility) {

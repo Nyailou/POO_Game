@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Goblin",
+    "healthMin": 50,
+    "healthMax": 80,
+    "manaMin": 10,
+    "manaMax": 20,
+    "strengthMin": 10,
+    "strengthMax": 15,
+    "defenseMin": 5,
+    "defenseMax": 10,
+    "agilityMin": 3,
+    "agilityMax": 6,
+    "loot": [
+      {
+        "type": "Consumable",
+        "name": "Poção Fraca",
+        "description": "Cura 15 HP",
+        "heal": 15,
+        "manaRestore": 0
+      }
+    ]
+  },
+  {
+    "name": "Esqueleto",
+    "healthMin": 60,
+    "healthMax": 90,
+    "manaMin": 5,
+    "manaMax": 15,
+    "strengthMin": 12,
+    "strengthMax": 18,
+    "defenseMin": 6,
+    "defenseMax": 12,
+    "agilityMin": 2,
+    "agilityMax": 5,
+    "loot": []
+  },
+  {
+    "name": "Bandido",
+    "healthMin": 70,
+    "healthMax": 100,
+    "manaMin": 15,
+    "manaMax": 25,
+    "strengthMin": 14,
+    "strengthMax": 20,
+    "defenseMin": 8,
+    "defenseMax": 14,
+    "agilityMin": 4,
+    "agilityMax": 8,
+    "loot": [
+      {
+        "type": "Consumable",
+        "name": "Poção Média",
+        "description": "Cura 30 HP",
+        "heal": 30,
+        "manaRestore": 0
+      }
+    ]
+  },
+  {
+    "name": "Lobo Sombrio",
+    "healthMin": 80,
+    "healthMax": 110,
+    "manaMin": 0,
+    "manaMax": 0,
+    "strengthMin": 18,
+    "strengthMax": 22,
+    "defenseMin": 5,
+    "defenseMax": 10,
+    "agilityMin": 7,
+    "agilityMax": 10,
+    "loot": []
+  },
+  {
+    "name": "Orc Guerreiro",
+    "healthMin": 100,
+    "healthMax": 140,
+    "manaMin": 20,
+    "manaMax": 30,
+    "strengthMin": 20,
+    "strengthMax": 28,
+    "defenseMin": 12,
+    "defenseMax": 18,
+    "agilityMin": 2,
+    "agilityMax": 5,
+    "loot": [
+      {
+        "type": "Consumable",
+        "name": "Poção de Força",
+        "description": "Aumenta força temporariamente",
+        "heal": 0,
+        "manaRestore": 0
+      }
+    ]
+  },
+  {
+    "name": "Arqueiro Elfo Corrompido",
+    "healthMin": 65,
+    "healthMax": 90,
+    "manaMin": 25,
+    "manaMax": 40,
+    "strengthMin": 12,
+    "strengthMax": 16,
+    "defenseMin": 6,
+    "defenseMax": 10,
+    "agilityMin": 6,
+    "agilityMax": 9,
+    "loot": []
+  },
+  {
+    "name": "Slime Ácido",
+    "healthMin": 40,
+    "healthMax": 70,
+    "manaMin": 0,
+    "manaMax": 0,
+    "strengthMin": 8,
+    "strengthMax": 12,
+    "defenseMin": 2,
+    "defenseMax": 5,
+    "agilityMin": 1,
+    "agilityMax": 3,
+    "loot": [
+      {
+        "type": "Consumable",
+        "name": "Resíduo Ácido",
+        "description": "Ingrediente alquímico corrosivo",
+        "heal": 0,
+        "manaRestore": 0
+      }
+    ]
+  },
+  {
+    "name": "Feiticeiro das Sombras",
+    "healthMin": 90,
+    "healthMax": 120,
+    "manaMin": 60,
+    "manaMax": 90,
+    "strengthMin": 10,
+    "strengthMax": 14,
+    "defenseMin": 8,
+    "defenseMax": 12,
+    "agilityMin": 4,
+    "agilityMax": 6,
+    "loot": [
+      {
+        "type": "Consumable",
+        "name": "Poção de Mana",
+        "description": "Recupera 25 de Mana",
+        "heal": 0,
+        "manaRestore": 25
+      }
+    ]
+  }
+]
