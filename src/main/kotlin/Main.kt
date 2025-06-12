@@ -176,18 +176,7 @@ fun explore(hero: Hero) {
         val isBoss = encontros > maxEncontros
 
         val enemy = if (isBoss) {
-            Enemy(
-                name = "Dragão das Sombras",
-                health = 250,
-                mana = 100,
-                strength = 35,
-                defense = 20,
-                agility = 10,
-                loot = listOf(
-                    Consumable("Poção Mística", "Cura 100 HP e 50 Mana", heal = 100, manaRestore = 50),
-                    Consumable("Elixir do Poder", "Cura total", heal = 999)
-                )
-            )
+            BossLoader.generateBoss(hero.level)
         } else {
             EnemyLoader.generateEnemyFromTemplates(hero.level)
         }

@@ -1,0 +1,75 @@
+[
+  {
+    "name": "Dragão das Sombras",
+    "healthMin": 300,
+    "healthMax": 350,
+    "manaMin": 100,
+    "manaMax": 150,
+    "strengthMin": 30,
+    "strengthMax": 40,
+    "defenseMin": 20,
+    "defenseMax": 30,
+    "agilityMin": 5,
+    "agilityMax": 8,
+    "loot": [
+      {
+        "type": "Consumable",
+        "name": "Poção Mística",
+        "description": "Cura 100 HP e 50 Mana",
+        "heal": 100,
+        "manaRestore": 50
+      },
+      {
+        "type": "Consumable",
+        "name": "Elixir do Poder",
+        "description": "Cura total",
+        "heal": 999,
+        "manaRestore": 999
+      }
+    ]
+  },
+  {
+    "name": "Lorde Esqueleto",
+    "healthMin": 250,
+    "healthMax": 300,
+    "manaMin": 60,
+    "manaMax": 90,
+    "strengthMin": 28,
+    "strengthMax": 36,
+    "defenseMin": 18,
+    "defenseMax": 24,
+    "agilityMin": 4,
+    "agilityMax": 6,
+    "loot": [
+      {
+        "type": "Consumable",
+        "name": "Essência Sombria",
+        "description": "Ingrediente mágico poderoso",
+        "heal": 0,
+        "manaRestore": 0
+      }
+    ]
+  },
+  {
+    "name": "Incarnação do Caos",
+    "healthMin": 280,
+    "healthMax": 320,
+    "manaMin": 80,
+    "manaMax": 110,
+    "strengthMin": 32,
+    "strengthMax": 38,
+    "defenseMin": 16,
+    "defenseMax": 22,
+    "agilityMin": 6,
+    "agilityMax": 10,
+    "loot": [
+      {
+        "type": "Consumable",
+        "name": "Poção do Vazio",
+        "description": "Cura 50 HP e 50 Mana",
+        "heal": 50,
+        "manaRestore": 50
+      }
+    ]
+  }
+]
