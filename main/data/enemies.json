@@ -18,6 +18,13 @@
         "description": "Cura 15 HP",
         "heal": 15,
         "manaRestore": 0
+      },
+      {
+        "type": "Weapon",
+        "name": "Adaga Enferrujada",
+        "description": "Pequena, mas afiada",
+        "strengthBonus": 2,
+        "defenseBonus": 0
       }
     ]
   },
@@ -33,7 +40,15 @@
     "defenseMax": 12,
     "agilityMin": 2,
     "agilityMax": 5,
-    "loot": []
+    "loot": [
+      {
+        "type": "Helmet",
+        "name": "Capacete Quebrado",
+        "description": "Proteção mínima",
+        "strengthBonus": 0,
+        "defenseBonus": 1
+      }
+    ]
   },
   {
     "name": "Bandido",
@@ -54,6 +69,13 @@
         "description": "Cura 30 HP",
         "heal": 30,
         "manaRestore": 0
+      },
+      {
+        "type": "Weapon",
+        "name": "Espada Curta",
+        "description": "Ideal para ataques rápidos",
+        "strengthBonus": 3,
+        "defenseBonus": 0
       }
     ]
   },
@@ -69,7 +91,15 @@
     "defenseMax": 10,
     "agilityMin": 7,
     "agilityMax": 10,
-    "loot": []
+    "loot": [
+      {
+        "type": "Boots",
+        "name": "Botas de Couro",
+        "description": "Leves e silenciosas",
+        "strengthBonus": 0,
+        "defenseBonus": 2
+      }
+    ]
   },
   {
     "name": "Orc Guerreiro",
@@ -85,11 +115,18 @@
     "agilityMax": 5,
     "loot": [
       {
-        "type": "Consumable",
-        "name": "Poção de Força",
-        "description": "Aumenta força temporariamente",
-        "heal": 0,
-        "manaRestore": 0
+        "type": "Weapon",
+        "name": "Machado Orc",
+        "description": "Pesado e mortal",
+        "strengthBonus": 5,
+        "defenseBonus": 0
+      },
+      {
+        "type": "Chestplate",
+        "name": "Peitoral de Ferro",
+        "description": "Oferece boa proteção",
+        "strengthBonus": 0,
+        "defenseBonus": 4
       }
     ]
   },
@@ -105,7 +142,15 @@
     "defenseMax": 10,
     "agilityMin": 6,
     "agilityMax": 9,
-    "loot": []
+    "loot": [
+      {
+        "type": "Leggings",
+        "name": "Calças Élficas",
+        "description": "Confeccionadas com tecidos mágicos",
+        "strengthBonus": 0,
+        "defenseBonus": 3
+      }
+    ]
   },
   {
     "name": "Slime Ácido",
@@ -148,6 +193,79 @@
         "description": "Recupera 25 de Mana",
         "heal": 0,
         "manaRestore": 25
+      },
+      {
+        "type": "Helmet",
+        "name": "Capuz do Vazio",
+        "description": "Canaliza energia arcana",
+        "strengthBonus": 0,
+        "defenseBonus": 3
+      }
+    ]
+  },
+  {
+    "name": "Cavaleiro Caído",
+    "healthMin": 90,
+    "healthMax": 130,
+    "manaMin": 20,
+    "manaMax": 30,
+    "strengthMin": 18,
+    "strengthMax": 26,
+    "defenseMin": 12,
+    "defenseMax": 18,
+    "agilityMin": 3,
+    "agilityMax": 5,
+    "loot": [
+      {
+        "type": "Chestplate",
+        "name": "Cota de Malha Negra",
+        "description": "Usada em vida, amaldiçoada na morte",
+        "strengthBonus": 0,
+        "defenseBonus": 4
+      }
+    ]
+  },
+  {
+    "name": "Elemental de Fogo",
+    "healthMin": 60,
+    "healthMax": 100,
+    "manaMin": 40,
+    "manaMax": 60,
+    "strengthMin": 14,
+    "strengthMax": 20,
+    "defenseMin": 4,
+    "defenseMax": 8,
+    "agilityMin": 6,
+    "agilityMax": 9,
+    "loot": [
+      {
+        "type": "Consumable",
+        "name": "Chama Ardente",
+        "description": "Ingrediente para poções ofensivas",
+        "heal": 0,
+        "manaRestore": 0
+      }
+    ]
+  },
+  {
+    "name": "Assassino das Sombras",
+    "healthMin": 70,
+    "healthMax": 90,
+    "manaMin": 10,
+    "manaMax": 20,
+    "strengthMin": 16,
+    "strengthMax": 24,
+    "defenseMin": 6,
+    "defenseMax": 10,
+    "agilityMin": 9,
+    "agilityMax": 13,
+    "loot": [
+      {
+        "type": "Boots",
+        "name": "Botas Silenciosas",
+        "description": "Feitas para andar sem ser visto",
+        "strengthBonus": 0,
+        "defenseBonus": 2
       }
     ]
   }

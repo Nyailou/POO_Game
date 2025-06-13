@@ -13,16 +13,23 @@
     "agilityMax": 8,
     "loot": [
       {
-        "type": "Consumable",
-        "name": "Poção Mística",
-        "description": "Cura 100 HP e 50 Mana",
-        "heal": 100,
-        "manaRestore": 50
+        "type": "Weapon",
+        "name": "Lança Flamejante",
+        "description": "Imbuída com fogo ancestral",
+        "strengthBonus": 10,
+        "defenseBonus": 0
+      },
+      {
+        "type": "Chestplate",
+        "name": "Armadura Escamada de Dragão",
+        "description": "Escamas de dragão negro reforçadas",
+        "strengthBonus": 0,
+        "defenseBonus": 8
       },
       {
         "type": "Consumable",
         "name": "Elixir do Poder",
-        "description": "Cura total",
+        "description": "Restaura totalmente vida e mana",
         "heal": 999,
         "manaRestore": 999
       }
@@ -42,6 +49,20 @@
     "agilityMax": 6,
     "loot": [
       {
+        "type": "Helmet",
+        "name": "Elmo Amaldiçoado",
+        "description": "Exala energia profana",
+        "strengthBonus": 0,
+        "defenseBonus": 6
+      },
+      {
+        "type": "Weapon",
+        "name": "Espada Espectral",
+        "description": "Vibra com poder necromântico",
+        "strengthBonus": 8,
+        "defenseBonus": 0
+      },
+      {
         "type": "Consumable",
         "name": "Essência Sombria",
         "description": "Ingrediente mágico poderoso",
@@ -51,7 +72,7 @@
     ]
   },
   {
-    "name": "Incarnação do Caos",
+    "name": "Arauto do Caos",
     "healthMin": 280,
     "healthMax": 320,
     "manaMin": 80,
@@ -64,11 +85,112 @@
     "agilityMax": 10,
     "loot": [
       {
+        "type": "Boots",
+        "name": "Botas do Vazio",
+        "description": "Permitem passos silenciosos entre planos",
+        "strengthBonus": 0,
+        "defenseBonus": 4
+      },
+      {
+        "type": "Leggings",
+        "name": "Calças do Caos",
+        "description": "Protegem o usuário da instabilidade mágica",
+        "strengthBonus": 0,
+        "defenseBonus": 5
+      },
+      {
         "type": "Consumable",
         "name": "Poção do Vazio",
-        "description": "Cura 50 HP e 50 Mana",
+        "description": "Recupera 50 HP e 50 Mana",
         "heal": 50,
         "manaRestore": 50
+      }
+    ]
+  },
+  {
+    "name": "Imperador de Gelo",
+    "healthMin": 320,
+    "healthMax": 370,
+    "manaMin": 120,
+    "manaMax": 160,
+    "strengthMin": 26,
+    "strengthMax": 34,
+    "defenseMin": 22,
+    "defenseMax": 30,
+    "agilityMin": 4,
+    "agilityMax": 7,
+    "loot": [
+      {
+        "type": "Weapon",
+        "name": "Cetro Congelante",
+        "description": "Concede poderes de gelo",
+        "strengthBonus": 6,
+        "defenseBonus": 0
+      },
+      {
+        "type": "Helmet",
+        "name": "Coroa do Inverno",
+        "description": "Símbolo de um império gelado",
+        "strengthBonus": 0,
+        "defenseBonus": 5
+      }
+    ]
+  },
+  {
+    "name": "Abominação Carnívora",
+    "healthMin": 350,
+    "healthMax": 400,
+    "manaMin": 0,
+    "manaMax": 0,
+    "strengthMin": 35,
+    "strengthMax": 45,
+    "defenseMin": 18,
+    "defenseMax": 24,
+    "agilityMin": 3,
+    "agilityMax": 6,
+    "loot": [
+      {
+        "type": "Chestplate",
+        "name": "Carapaça de Ossos",
+        "description": "Feita de vítimas anteriores",
+        "strengthBonus": 0,
+        "defenseBonus": 7
+      },
+      {
+        "type": "Consumable",
+        "name": "Sangue Viscoso",
+        "description": "Alquimia negra em estado bruto",
+        "heal": 0,
+        "manaRestore": 0
+      }
+    ]
+  },
+  {
+    "name": "Arquimago das Cinzas",
+    "healthMin": 280,
+    "healthMax": 330,
+    "manaMin": 150,
+    "manaMax": 200,
+    "strengthMin": 20,
+    "strengthMax": 28,
+    "defenseMin": 14,
+    "defenseMax": 18,
+    "agilityMin": 5,
+    "agilityMax": 8,
+    "loot": [
+      {
+        "type": "Leggings",
+        "name": "Calças Encantadas",
+        "description": "Absorvem parte da energia mágica recebida",
+        "strengthBonus": 0,
+        "defenseBonus": 5
+      },
+      {
+        "type": "Consumable",
+        "name": "Poção Arcana",
+        "description": "Restaura 100 de Mana",
+        "heal": 0,
+        "manaRestore": 100
       }
     ]
   }
