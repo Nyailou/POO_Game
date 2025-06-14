@@ -19,12 +19,10 @@ object SaveManager {
 
     fun save(hero: Hero) {
         ensureDir()
-        // usa o json configurado
         file.writeText(json.encodeToString(hero))
     }
 
     fun load(): Hero? {
-        ensureDir()
         return if (file.exists()) {
             json.decodeFromString<Hero>(file.readText())
         } else null

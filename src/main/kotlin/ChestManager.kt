@@ -18,18 +18,22 @@ object ChestManager {
     }
 
     fun save(chest: List<Item>) {
-        ensureDir()
-        // serializa a lista de Item usando o mesmo json
+        val json = Json {
+            serializersModule = ItemModule.module
+            classDiscriminator = "type"
+            prettyPrint = true
+        }
         file.writeText(json.encodeToString(chest))
     }
 
     fun load(): MutableList<Item> {
-        ensureDir()
-        return if (file.exists()) {
-            // desserializa polimorficamente
-            json.decodeFromString<List<Item>>(file.readText()).toMutableList()
-        } else {
-            mutableListOf()
+        val json = Json {
+            serializersModule = ItemModule.module
+            classDiscriminator = "type"
+            ignoreUnknownKeys = true
         }
+        return if (file.exists()) {
+            json.decodeFromString(file.readText())
+        } else mutableListOf()
     }
 }

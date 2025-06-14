@@ -7,13 +7,12 @@ import kotlinx.serialization.modules.subclass
 object ItemModule {
     val module = SerializersModule {
         polymorphic(Item::class) {
-            subclass(Consumable::class)
-            subclass(Armor::class)
+            subclass(Chestplate::class)
             subclass(Weapon::class)
             subclass(Helmet::class)
-            subclass(Chestplate::class)
-            subclass(Leggings::class)
             subclass(Boots::class)
+            subclass(Leggings::class)
+            subclass(Consumable::class)
         }
     }
 }

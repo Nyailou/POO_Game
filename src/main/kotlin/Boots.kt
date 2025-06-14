@@ -1,3 +1,5 @@
+package com.example
+
 import com.example.EquipmentSlot
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,5 +1,5 @@
-import com.example.Item
-import com.example.EquipmentSlot
+package com.example
+
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
 

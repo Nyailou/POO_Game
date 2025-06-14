@@ -1,10 +1,10 @@
 {
-    "name": "1",
+    "name": "joao",
     "health": 100,
     "mana": 50,
-    "strength": 30,
-    "defense": 20,
-    "agility": 10,
+    "strength": 22,
+    "defense": 12,
+    "agility": 6,
     "inventory": {
         "items": [
             {
@@ -14,36 +14,12 @@
                 "heal": 30
             },
             {
-                "type": "Consumable",
-                "name": "Poção Fraca",
-                "description": "Cura 15 HP",
-                "heal": 15
-            },
-            {
-                "type": "Consumable",
-                "name": "Poção Fraca",
-                "description": "Cura 15 HP",
-                "heal": 15
-            },
-            {
-                "type": "Consumable",
-                "name": "Poção Fraca",
-                "description": "Cura 15 HP",
-                "heal": 15
-            },
-            {
-                "type": "Consumable",
-                "name": "Poção Fraca",
-                "description": "Cura 15 HP",
-                "heal": 15
-            },
-            {
-                "type": "Consumable",
-                "name": "Poção Fraca",
-                "description": "Cura 15 HP",
-                "heal": 15
+                "type": "Chestplate",
+                "name": "Cota de Malha Negra",
+                "description": "Usada em vida, amaldiçoada na morte",
+                "defenseBonus": 4
             }
         ]
     },
-    "level": 6
+    "level": 2
 }

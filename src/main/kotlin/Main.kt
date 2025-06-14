@@ -133,12 +133,17 @@ class Camp {
                     onExplore(hero)
                 }
                 "5" -> {
-                    val equipables = hero.inventory.getItems().filterIsInstance<Equipable>()
+                    val allItems = hero.inventory.getItems()
+
+                    val equipables = allItems.filterIsInstance<Equipable>()
+
                     if (equipables.isEmpty()) {
                         println("Nenhum equipamento disponível.")
                     } else {
                         println("Escolha um item para equipar:")
-                        equipables.forEachIndexed { i, item -> println("${i + 1} - ${item.name} (${item.slot})") }
+                        equipables.forEachIndexed { i, item ->
+                            println("${i + 1} - ${item.name} (${item.slot})")
+                        }
                         val idx = readLine()?.toIntOrNull()?.minus(1)
                         val item = equipables.getOrNull(idx ?: -1)
                         if (item != null) hero.equip(item) else println("Opção inválida.")
