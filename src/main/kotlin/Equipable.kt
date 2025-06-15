@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 
 @Serializable
 @SerialName("Equipable")
-abstract class Equipable : Item() {
+sealed class Equipable : Item() {
     abstract val slot: EquipmentSlot
     abstract val strengthBonus: Int
     abstract val defenseBonus: Int

@@ -15,6 +15,9 @@ class Hero(
     var experience: Int = 0
 ) : Character(name, health, mana, strength, defense, agility) {
 
+    var inimigosDerrotadosUltimaExploracao: Int = 0
+    var jaVisitouMercador: Boolean = false
+
     fun equip(item: Equipable) {
         val slot = item.slot
         equipment[slot]?.let {

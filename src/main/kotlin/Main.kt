@@ -122,7 +122,8 @@ class Camp {
             println("4 - Explorar")
             println("5 - Equipar item")
             println("6 - Desequipar item")
-            println("7 - Sair do jogo")
+            println("7 - Visitar Mercador")
+            println("8 - Sair do jogo")
 
             when (readLine()) {
                 "1" -> rest(hero)
@@ -157,6 +158,9 @@ class Camp {
                     if (slot != null) hero.unequip(slot) else println("Opção inválida.")
                 }
                 "7" -> {
+                    Merchant.visitar(hero)
+                }
+                "8" -> {
                     println("Encerrando o jogo. Até a próxima!")
                     exitProcess(0)
                 }
@@ -173,8 +177,9 @@ fun explore(hero: Hero) {
     var xpGanho = 0
     var encontros = 0
     val maxEncontros = 10
+    hero.inimigosDerrotadosUltimaExploracao = 0
+    hero.jaVisitouMercador = false
 
-    Merchant.visit(hero)
 
     println("Você partiu para a exploração!")
 
@@ -239,6 +244,7 @@ fun explore(hero: Hero) {
 
         if (!enemy.isAlive()) {
             println("Você derrotou o ${enemy.name}!")
+            hero.inimigosDerrotadosUltimaExploracao++
 
             if (isBoss) {
                 xpGanho += 500

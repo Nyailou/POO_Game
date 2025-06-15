@@ -12,8 +12,18 @@ object Merchant {
         Consumable("Poção de Mana", "Recupera 20 de Mana", 0, 20)
     )
 
-    fun visit(hero: Hero) {
-        println("\n🧙 Um mercador misterioso apareceu com itens para vender!")
+    fun visitar(hero: Hero) {
+        if (hero.jaVisitouMercador) {
+            println("Você já visitou o mercador nesta rodada.")
+            return
+        }
+
+        if (hero.inimigosDerrotadosUltimaExploracao < 3) {
+            println("Você precisa derrotar pelo menos 3 inimigos na última exploração para acessar o mercador.")
+            return
+        }
+
+        println("\nO mercador mostra três itens raros:")
 
         val ofertas = ofertasDisponiveis.shuffled().take(3)
 
@@ -26,11 +36,12 @@ object Merchant {
         val itemEscolhido = ofertas.getOrNull(escolha - 1)
 
         if (itemEscolhido != null) {
-            println("Você comprou ${itemEscolhido.name}!")
+            println("Você adquiriu ${itemEscolhido.name}!")
             hero.inventory.addItem(itemEscolhido)
             InventoryManager.save(hero.inventory)
+            hero.jaVisitouMercador = true
         } else {
-            println("Você decidiu não comprar nada.")
+            println("Você recusou a oferta do mercador.")
         }
     }
 }
