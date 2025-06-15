@@ -174,6 +174,8 @@ fun explore(hero: Hero) {
     var encontros = 0
     val maxEncontros = 10
 
+    Merchant.visit(hero)
+
     println("Você partiu para a exploração!")
 
     while (hero.isAlive()) {

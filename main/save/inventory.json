@@ -1,0 +1,22 @@
+{
+    "items": [
+        {
+            "type": "Consumable",
+            "name": "Poção de Vida",
+            "description": "Cura 30 HP",
+            "heal": 30
+        },
+        {
+            "type": "Chestplate",
+            "name": "Peitoral de Ferro",
+            "description": "Boa proteção para o torso",
+            "defenseBonus": 4
+        },
+        {
+            "type": "Weapon",
+            "name": "Espada de Bronze",
+            "description": "Uma espada simples",
+            "strengthBonus": 2
+        }
+    ]
+}
